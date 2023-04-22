@@ -1,0 +1,7 @@
+mirror/el?/*/**
+!mirror/el?/*/.gitignore
+pxelinux/images/*/initrd.img
+pxelinux/images/*/vmlinuz
+**/.DS_Store
+**/*.swp
+**/*.swo
