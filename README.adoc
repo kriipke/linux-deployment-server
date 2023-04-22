@@ -1,15 +1,15 @@
 = Linux Deployment Server Files
 
-These files are basically all you need to run a Linux deployment server. There are 3 directories, each used by a separate service in the provisioning process:
 
 == Configure Services
 
-== Host Directories via Appropriate Services
+These files are basically all you need to run a Linux deployment server. There are 3 directories, each used by a separate service in the provisioning process:
 
 Host the following files:
-. `./mirror`: Host via `NFS`
-. `./pxelinux`: Host via `TFTP`. Once Hosted set the correct IP in your DHCP server
-. `./ftp`: Host via `FTP`. Once Hosted set the correct IP of the FTP server in `./pxelinux/pxelinux.cfg/default`.
+
+1. `./mirror`: Host via `NFS`
+2. `./pxelinux`: Host via `TFTP`. Once Hosted set the correct IP in your DHCP server
+3. `./ftp`: Host via `FTP`. Once Hosted set the correct IP of the FTP server in `./pxelinux/pxelinux.cfg/default`.
 
 == Generate Needed Files to Host
 
