@@ -2,7 +2,18 @@
 
 These files are basically all you need to run a Linux deployment server. There are 3 directories, each used by a separate service in the provisioning process:
 
-== 0. Edit Makefile
+== Configure Services
+
+== Host Directories via Appropriate Services
+
+Host the following files:
+. `./mirror`: Host via `NFS`
+. `./pxelinux`: Host via `TFTP`. Once Hosted set the correct IP in your DHCP server
+. `./ftp`: Host via `FTP`. Once Hosted set the correct IP of the FTP server in `./pxelinux/pxelinux.cfg/default`.
+
+== Generate Needed Files to Host
+
+=== 0. Edit Makefile
 
 You can edit the first 3 arguments in the Makefile to avoid passing parameters to `make` on the command line.
 
@@ -16,7 +27,7 @@ Edit these 3 values (assuming ISO_FILENAME is the name of a file in the ./iso di
 	make bootimgs
 	make osrepo
 
-== 1. Make PXE Loaders
+=== 1. Copy PXE Loaders
 
 The following really only needs to be done once. The rest of the steps you will repeat with each ISO you create (of the same architecture, e.g. x86_64)
 
@@ -32,7 +43,7 @@ Will create the following files:
 
 These are the bootloaders needed to run the PXE boot and load `pxelinux/pxelinux.cfg/default`
 
-== 2. Make Boot Images
+=== 2. Copy Boot Images
 
 	make ISO_FILENAME=rhel-baseos-9.1-x86_64-dvd.iso LINUX_DISTRO=RHEL DISTRO_RELEASE=9.1 bootimgs
 
@@ -43,7 +54,7 @@ Will create the following files:
 
 This will create the boot images needed for whatever OS is fed in in the ISO argument. For example if rhel-baseos-9.1-x86_64-dvd.iso
 
-== 3. Make OS Repostitory Mirror
+=== 3. Copy OS Repostitory
 
 	make ISO_FILENAME=rhel-baseos-9.1-x86_64-dvd.iso LINUX_DISTRO=RHEL DISTRO_RELEASE=9.1 osrepo 
 
@@ -61,6 +72,12 @@ This will clone the installation DVD to the `./mirror` directory such that there
 	mirror/RHEL-9.1/isolinux
 	mirror/RHEL-9.1/media.repo
 
-== 4. Edit `pxelinux/pxelinux.cfg/default`
+== Edit Configuration Files
+
+== Edit `pxelinux/pxelinux.cfg/default`
 
 You'll now want to go in and add the boot options for the new OS you just added.
+
+== Edit `ks.cfg`
+
+Go in and add your desired password and configuration in the kickstart files.
