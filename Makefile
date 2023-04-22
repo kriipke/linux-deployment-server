@@ -3,7 +3,7 @@ DISTRO_RELEASE := 9.1
 ISO_FILENAME := rhel-baseos-9.1-x86_64-dvd.iso
 
 REPO_DIR := ./mirror
-TFTP_ROOT := ./pxelinux/
+TFTP_ROOT := ./pxelinux
 
 ISO_DIR := ./iso
 BOOT_IMAGES := $(TFTP_ROOT)/images
