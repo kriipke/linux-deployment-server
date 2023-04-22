@@ -1,28 +1,27 @@
-timeout 600
-display boot.msg
-default 4
-prompt  1
+default menu.c32
+prompt  0
+timeout 300
+ontimeout local
 
-label 1
-  menu label ^Install RHEL 9.1 via Kickstart: Bare Metal
-  kernel images/RHEL-9.1/vmlinuz
-  append initrd=images/RHEL-9.1/initrd.img ip=dhcp inst.ks=ftp://10.2.0.8/ks/el9/ks-baremetal.cfg 
+MENU TITLE OS Deployment Options
 
-label 2
-  menu label ^Install RHEL 9.1 via Kickstart: Virtual Machine
-  kernel images/RHEL-9.1/vmlinuz
-  append initrd=images/RHEL-9.1/initrd.img ip=dhcp inst.ks=ftp://10.2.0.8/ks/el9/ks-vm.cfg 
+LABEL 1
+  MENU LABEL Install RHEL 9.1 via Kickstart: ^Bare Metal
+  KERNEL images/RHEL-9.1/vmlinuz
+  APPEND initrd=images/RHEL-9.1/initrd.img ip=dhcp inst.ks=ftp://10.2.0.8/ks/el9/ks-baremetal.cfg 
 
-label 3
-  menu label ^Install RHEL 9.0 via local mirror
-  kernel images/RHEL-9.0/vmlinuz
-  append initrd=images/RHEL-9.0/initrd.img ip=dhcp inst.repo=nfs:10.2.0.6:/mnt/store/deployment/mirror/el9/rhel-9.0/
+LABEL 2
+  MENU LABEL Install RHEL 9.1 via Kickstart: ^Virtual Machine
+  KERNEL images/RHEL-9.1/vmlinuz
+  APPEND initrd=images/RHEL-9.1/initrd.img ip=dhcp inst.ks=ftp://10.2.0.8/ks/el9/ks-vm.cfg 
+
+LABEL 3
+  MENU LABEL Install RHEL 9.1 via ^Guided Install
+  KERNEL images/RHEL-9.1/vmlinuz
+  APPEND initrd=images/RHEL-9.1/initrd.img ip=dhcp inst.repo=nfs:10.2.0.6:/mnt/store/deployment/mirror/el9/rhel-9.1/
 
 label 4
-  menu label Boot from ^local drive
-  localboot 0x80
-
+  MENU LABEL Boot from ^local drive
+  LOCALBOOT 0x80
 
 menu end
-
-
