@@ -1,11 +1,12 @@
 LINUX_DISTRO := RHEL
-DISTRO_RELEASE := 9.2
+DISTRO_RELEASE := 9.1
 ISO_FILENAME := rhel-baseos-9.1-x86_64-dvd.iso
 
-ISO_DIR := ./iso
 REPO_DIR := ./mirror
 TFTP_ROOT := ./pxelinux/
-BOOT_IMAGES := ./pxelinux/images
+
+ISO_DIR := ./iso
+BOOT_IMAGES := $(TFTP_ROOT)/images
 RELEASE_SHORTNAME := $(LINUX_DISTRO)-$(DISTRO_RELEASE)
 
 pxelinux:
